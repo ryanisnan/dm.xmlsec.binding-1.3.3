@@ -87,6 +87,8 @@ def extract_libs(libs):
             print "Warning : linker flag %s skipped" % flag
 
 
+print "XMLSEC_CONFIG: %s" % environ.get('XMLSEC_CONFIG')
+
 libxml2_cflags = commands.getoutput('xml2-config --cflags')
 if libxml2_cflags[:2] not in ["-I", "-D"]:
     sys.exit("Error : cannot get LibXML2 pre-processor and compiler flags; do you have the `libxml2` development package installed?")
