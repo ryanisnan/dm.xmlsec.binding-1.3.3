@@ -87,7 +87,7 @@ def extract_libs(libs):
             print "Warning : linker flag %s skipped" % flag
 
 
-print "XMLSEC_CONFIG: %s" % environ.get('XMLSEC_CONFIG', '--prefix /app/.apt/usr')
+
 
 libxml2_cflags = commands.getoutput('xml2-config --cflags')
 if libxml2_cflags[:2] not in ["-I", "-D"]:
@@ -105,7 +105,12 @@ if crypto_engine is None:
 else:
   assert crypto_engine in ("openssl", "gnutls", "nss")
 crypto_engine = " --crypto=" + crypto_engine
+
+print "XMLSEC_CONFIG: %s" % environ.get('XMLSEC_CONFIG', '--prefix /app/.apt/usr')
 xmlsec1_cflags = commands.getoutput("xmlsec1-config --cflags %s" % environ.get('XMLSEC_CONFIG') + crypto_engine)
+
+print xmlsec1_cflags
+print xmlsec1_cflags[:2]
 if xmlsec1_cflags[:2] not in ["-I", "-D"]:
     sys.exit("Error: cannot get XMLSec1 pre-processor and compiler flags; do you have the `libxmlsec1` development package installed?")
 
