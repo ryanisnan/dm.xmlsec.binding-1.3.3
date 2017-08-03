@@ -87,7 +87,7 @@ def extract_libs(libs):
             print "Warning : linker flag %s skipped" % flag
 
 
-print "XMLSEC_CONFIG: %s" % environ.get('XMLSEC_CONFIG')
+print "XMLSEC_CONFIG: %s" % environ.get('XMLSEC_CONFIG', '--prefix /app/.apt/usr')
 
 libxml2_cflags = commands.getoutput('xml2-config --cflags')
 if libxml2_cflags[:2] not in ["-I", "-D"]:
