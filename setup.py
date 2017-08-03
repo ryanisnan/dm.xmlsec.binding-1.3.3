@@ -106,7 +106,7 @@ else:
   assert crypto_engine in ("openssl", "gnutls", "nss")
 crypto_engine = " --crypto=" + crypto_engine
 
-print "XMLSEC_CONFIG: %s" % environ.get('XMLSEC_CONFIG', '--prefix /app/.apt/usr')
+print "XMLSEC_CONFIG: %s" % environ.get('XMLSEC_CONFIG', '--prefix=/app/.apt/usr')
 xmlsec1_cflags = commands.getoutput("xmlsec1-config --cflags %s" % environ.get('XMLSEC_CONFIG') + crypto_engine)
 
 print xmlsec1_cflags
